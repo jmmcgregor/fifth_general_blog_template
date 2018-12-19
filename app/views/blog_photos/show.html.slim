@@ -1,0 +1,9 @@
+p#notice = notice
+
+p
+  strong Image data:
+  = @blog_photo.image_data
+
+=> link_to 'Edit', edit_blog_photo_path(@blog_photo)
+'|
+=< link_to 'Back', blog_photos_path

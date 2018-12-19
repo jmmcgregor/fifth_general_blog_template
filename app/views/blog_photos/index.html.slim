@@ -1,0 +1,21 @@
+h1 Listing blog_photos
+
+table
+  thead
+    tr
+      th Image data
+      th
+      th
+      th
+
+  tbody
+    - @blog_photos.each do |blog_photo|
+      tr
+        td = blog_photo.image_data
+        td = link_to 'Show', blog_photo
+        td = link_to 'Edit', edit_blog_photo_path(blog_photo)
+        td = link_to 'Destroy', blog_photo, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Blog photo', new_blog_photo_path
