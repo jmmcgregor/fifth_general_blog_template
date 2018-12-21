@@ -26,7 +26,7 @@ class BlogUsersController < ApplicationController
   def create
     @blog_user = BlogUser.new(blog_user_params)
 
-    respond_to do |format|
+    respond_to do |format|    
       if @blog_user.save
         format.html { redirect_to @blog_user, notice: 'Blog user was successfully created.' }
         format.json { render :show, status: :created, location: @blog_user }
