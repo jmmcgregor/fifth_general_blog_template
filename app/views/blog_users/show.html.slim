@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @blog_user.name
+p
+  strong Email:
+  = @blog_user.email
+
+=> link_to 'Edit', edit_blog_user_path(@blog_user)
+'|
+=< link_to 'Back', blog_users_path

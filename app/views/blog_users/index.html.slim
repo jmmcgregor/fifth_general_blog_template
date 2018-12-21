@@ -1,0 +1,23 @@
+h1 Listing blog_users
+
+table
+  thead
+    tr
+      th Name
+      th Email
+      th
+      th
+      th
+
+  tbody
+    - @blog_users.each do |blog_user|
+      tr
+        td = blog_user.name
+        td = blog_user.email
+        td = link_to 'Show', blog_user
+        td = link_to 'Edit', edit_blog_user_path(blog_user)
+        td = link_to 'Destroy', blog_user, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Blog user', new_blog_user_path
