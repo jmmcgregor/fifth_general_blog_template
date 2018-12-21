@@ -8,13 +8,13 @@ p
   = @blog_post.title
 p
   strong Main image:
-  = @blog_post.main_image
+  = image_tag(rails_blob_path(@blog_post.main_image))
 p
   strong Video upload:
   = @blog_post.video_upload
 p
   strong Body:
-  = @blog_post.body
+  = raw @blog_post.body
 p
   strong Seo title:
   = @blog_post.seo_title
