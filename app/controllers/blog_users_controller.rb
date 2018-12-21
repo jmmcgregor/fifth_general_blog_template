@@ -26,7 +26,7 @@ class BlogUsersController < ApplicationController
   def create
     @blog_user = BlogUser.new(blog_user_params)
 
-    respond_to do |format|    
+    respond_to do |format|
       if @blog_user.save
         format.html { redirect_to @blog_user, notice: 'Blog user was successfully created.' }
         format.json { render :show, status: :created, location: @blog_user }
@@ -69,6 +69,6 @@ class BlogUsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_user_params
-      params.require(:blog_user).permit(:name, :email)
+      params.require(:blog_user).permit(:name, :email, :password)
     end
 end
