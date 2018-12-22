@@ -66,3 +66,5 @@ gem 'slim-rails'
 gem 'trix-rails', require: 'trix'
 gem 'aws-sdk-s3', require: false
 gem 'bcrypt'
+gem 'kaminari'
+gem 'friendly_id'

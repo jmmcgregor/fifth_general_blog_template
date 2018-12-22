@@ -4,12 +4,13 @@ class BlogPostsController < ApplicationController
   # GET /blog_posts
   # GET /blog_posts.json
   def index
-    @blog_posts = BlogPost.all
+    @blog_posts = BlogPost.page params[:page]
   end
 
   # GET /blog_posts/1
   # GET /blog_posts/1.json
   def show
+    @blog_post = BlogPost.friendly.find(params[:id])
   end
 
   # GET /blog_posts/new
@@ -27,7 +28,7 @@ class BlogPostsController < ApplicationController
     @blog_post = BlogPost.new(blog_post_params)
 
     respond_to do |format|
-      if @blog_post.save
+      if @blog_post.save! name: @blog_post.seo_title
         format.html { redirect_to @blog_post, notice: 'Blog post was successfully created.' }
         format.json { render :show, status: :created, location: @blog_post }
       else
@@ -64,7 +65,7 @@ class BlogPostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_blog_post
-      @blog_post = BlogPost.find(params[:id])
+      @blog_post = BlogPost.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

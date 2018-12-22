@@ -25,6 +25,7 @@
       / td = link_to 'Edit', edit_blog_post_path(blog_post)
       / td = link_to 'Destroy', blog_post, data: { confirm: 'Are you sure?' }, method: :delete
 
+  = paginate @blog_posts
 
 
   / = link_to 'New Blog post', new_blog_post_path
