@@ -1,27 +1,41 @@
-p#notice = notice
+#body-container
 
-p
-  strong Media type:
-  = @blog_post.media_type
-p
-  strong Title:
-  = @blog_post.title
-p
-  strong Main image:
-  = image_tag(rails_blob_path(@blog_post.main_image))
-p
-  strong Video upload:
-  = @blog_post.video_upload
-p
-  strong Body:
-  = raw @blog_post.body
-p
-  strong Seo title:
-  = @blog_post.seo_title
-p
-  strong Seo meta description:
-  = @blog_post.seo_meta_description
+  #body-left
+    #title
+      p
+        = @blog_post.title
+    - if @blog_post.media_type == 'Video Post'
+      iframe src="https://www.youtube.com/embed/CCsz6Gu1Gig"
+      / = @blog_post.video_upload
+    #date
+      p
+        = @blog_post.dateConversion()
+    #author
+      p By Sports Field Solutions
+    p
+      = raw @blog_post.body
+  #body-right
+    #body-right-column
+      #text-box
+        p YOU MIGHT ALSO LIKE:
+      .entry_page
+        #side-bar
+          .entry_container
+            - BlogPost.take(3).each_with_index do |blog_post, index|
+              = link_to(blog_post_url(blog_post))
+                .entry
+                  .entry_image style='background-image: url(#{rails_blob_path(blog_post.main_image)})'
+                  .entry_title
+                    p = blog_post.title
+      #questions-box
+        #questions-content
+          p HAVE QUESTIONS?
+          p WE HAVE ANSWERS.
+          = link_to "javascript:clicked('all')"
+            button id='questions-button' CONTACT US
 
-=> link_to 'Edit', edit_blog_post_path(@blog_post)
-'|
-=< link_to 'Back', blog_posts_path
+
+
+/ => link_to 'Edit', edit_blog_post_path(@blog_post)
+/ '|
+/ =< link_to 'Back', blog_posts_path

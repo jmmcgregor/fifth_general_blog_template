@@ -68,3 +68,5 @@ gem 'aws-sdk-s3', require: false
 gem 'bcrypt'
 gem 'kaminari'
 gem 'friendly_id'
+gem 'searchkick'
+gem 'elasticsearch', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git'

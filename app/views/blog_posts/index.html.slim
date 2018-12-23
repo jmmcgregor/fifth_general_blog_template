@@ -1,31 +1,198 @@
-#entry_page
-  h1 Learning Center
-  = form_tag(blog_posts_path method: :get) do
-    = text_field_tag :title, params[:title]
-    = submit_tag 'Search'
+.entry_page
+  h1 LEARNING CENTER
+  .form-container
+    = form_tag(blog_posts_path method: :get) do
+      = text_field_tag :title, params[:title], placeholder: "SEARCH FOR A TOPIC..."
+      = image_submit_tag("icons8-search-filled.svg")
   .entry_filters
-    button id='all_media_button' all media
-    button id='articles_button' articles
-    button id='videos_button' videos
-  .entry_container
-    - @blog_posts.each do |blog_post|
-      = link_to(blog_post_url(blog_post))
-        .entry
-          .entry_image style='background-image: url(#{rails_blob_path(blog_post.main_image)})'
-          .entry_title
-            p = blog_post.title
-      / td = blog_post.media_type
-      / td = blog_post.title
-      / td = blog_post.main_image
-      / td = blog_post.video_upload
-      / td = blog_post.body
-      / td = blog_post.seo_title
-      / td = blog_post.seo_meta_description
-      / td = link_to 'Show', blog_post
-      / td = link_to 'Edit', edit_blog_post_path(blog_post)
-      / td = link_to 'Destroy', blog_post, data: { confirm: 'Are you sure?' }, method: :delete
+    = link_to "javascript:clicked('all')"
+      button id='all_media_button' ALL MEDIA
+    = link_to "javascript:clicked('articles')"
+      button id='articles_button' ARTICLES
+    = link_to "javascript:clicked('videos')"
+      button id='videos_button' VIDEOS
 
-  = paginate @blog_posts
+  #all_container
+    .entry_container
+      - @blog_posts.take(9).each_with_index do |blog_post, index|
+        = link_to(blog_post_url(blog_post, @blog_post))
+          .entry
+            .entry_image style='background-image: url(#{rails_blob_path(blog_post.main_image)})'
+            .entry_title
+              p = blog_post.title
+    #all_more_posts
+      .entry_container
+        - @blog_posts.drop(9).each_with_index do |blog_post, index|
+          = link_to(blog_post_url(blog_post))
+            .entry
+              - if blog_post.media_type == 'Video Post'
+                = image_submit_tag("main-play-button 2.svg")
+              .entry_image style='background-image: url(#{rails_blob_path(blog_post.main_image)})'
+              .entry_title
+                p = blog_post.title
+    = link_to "javascript:seeMore('all')", id: "see_more_link"
+      button id='see_more_button' SEE MORE
+  #video_container
+    .entry_container
+      - @video_posts.take(9).each_with_index do |blog_post, index|
+        = link_to(blog_post_url(blog_post))
+          .entry
+            = image_submit_tag("main-play-button 2.svg")
+            .entry_image style='background-image: url(#{rails_blob_path(blog_post.main_image)})'
+            .entry_title
+              p = blog_post.title
+    #video_more_posts
+     .entry_container
+      - @video_posts.drop(9).each_with_index do |blog_post, index|
+        = link_to(blog_post_url(blog_post))
+          .entry
+            .entry_image style='background-image: url(#{rails_blob_path(blog_post.main_image)})'
+            .entry_title
+              p = blog_post.title
+    = link_to "javascript:seeMore('video')", id: "see_more_link"
+      button id='see_more_button' SEE MORE
+  #article_container
+    .entry_container
+      - @article_posts.take(9).each_with_index do |blog_post, index|
+        = link_to(blog_post_url(blog_post))
+          .entry
+            .entry_image style='background-image: url(#{rails_blob_path(blog_post.main_image)})'
+            .entry_title
+              p = blog_post.title
+    #article_more_posts
+     .entry_container
+      - @article_posts.drop(9).each_with_index do |blog_post, index|
+        = link_to(blog_post_url(blog_post))
+          .entry
+            .entry_image style='background-image: url(#{rails_blob_path(blog_post.main_image)})'
+            .entry_title
+              p = blog_post.title
+    = link_to "javascript:seeMore('article')", id: "see_more_link"
+      button id='see_more_button' SEE MORE
 
 
-  / = link_to 'New Blog post', new_blog_post_path
+/ td = blog_post.media_type
+/ td = blog_post.title
+/ td = blog_post.main_image
+/ td = blog_post.video_upload
+/ td = blog_post.body
+/ td = blog_post.seo_title
+/ td = blog_post.seo_meta_description
+/ td = link_to 'Show', blog_post
+/ td = link_to 'Edit', edit_blog_post_path(blog_post)
+/ td = link_to 'Destroy', blog_post, data: { confirm: 'Are you sure?' }, method: :delete
+
+/ = paginate @blog_posts
+/ = link_to 'New Blog post', new_blog_post_path
+javascript:
+  function clicked(a) {
+    if(a == 'all') {
+      video_button = document.getElementById('videos_button')
+      article_button = document.getElementById('articles_button')
+      all_button = document.getElementById('all_media_button')
+
+      enableButton(all_button)
+      disableButton(video_button)
+      disableButton(article_button)
+
+      videos = document.getElementById('video_container')
+      articles = document.getElementById('article_container')
+      hideDiv(videos)
+      hideDiv(articles)
+
+      hideAllExtras()
+
+      allMedia = document.getElementById('all_container')
+      showDiv(allMedia)
+    }
+    else if(a == 'articles') {
+      article_button = document.getElementById('articles_button')
+      video_button = document.getElementById('videos_button')
+      all_button = document.getElementById('all_media_button')
+
+      enableButton(article_button)
+      disableButton(all_button)
+      disableButton(video_button)
+
+      videos = document.getElementById('video_container')
+      allMedia = document.getElementById('all_container')
+      hideDiv(videos)
+      hideDiv(allMedia)
+
+      hideAllExtras()
+
+      articles = document.getElementById('article_container')
+      showDiv(articles)
+
+
+    }
+    else if(a == 'videos') {
+      video_button = document.getElementById('videos_button')
+      article_button = document.getElementById('articles_button')
+      all_button = document.getElementById('all_media_button')
+
+      enableButton(video_button)
+      disableButton(all_button)
+      disableButton(article_button)
+
+      allMedia = document.getElementById('all_container')
+      articles = document.getElementById('article_container')
+      hideDiv(allMedia)
+      hideDiv(articles)
+
+      hideAllExtras()
+
+      videos = document.getElementById('video_container')
+      showDiv(videos)
+    }
+
+    function disableButton(button) {
+      button.style.backgroundColor = '#f5f3f3'
+      button.style.color = "black"
+    }
+
+    function enableButton(button) {
+      button.style.backgroundColor = '#39b54a'
+      button.style.color = "white"
+    }
+  }
+  function seeMore(div) {
+    if(div == 'all') {
+      moreVideoPosts = document.getElementById('video_more_posts')
+      moreArticlePosts = document.getElementById('article_more_posts')
+      hideDiv(moreVideoPosts)
+      hideDiv(moreArticlePosts)
+      moreAllPosts = document.getElementById('all_more_posts')
+      showDiv(moreAllPosts)
+    }
+    if(div == 'video') {
+      moreAllPosts = document.getElementById('all_more_posts')
+      moreArticlePosts = document.getElementById('article_more_posts')
+      hideDiv(moreAllPosts)
+      hideDiv(moreArticlePosts)
+      moreVideoPosts = document.getElementById('video_more_posts')
+      showDiv(moreVideoPosts)
+    }
+    if(div == 'article') {
+      moreAllPosts = document.getElementById('all_more_posts')
+      moreVideoPosts = document.getElementById('video_more_posts')
+      hideDiv(moreAllPosts)
+      hideDiv(moreVideoPosts)
+      moreArticlePosts = document.getElementById('article_more_posts')
+      showDiv(moreArticlePosts)
+    }
+  }
+  function showDiv(element) {
+    element.style.display = 'block'
+  }
+  function hideDiv(element) {
+    element.style.display = 'none'
+  }
+  function hideAllExtras() {
+    moreAllPosts = document.getElementById('all_more_posts')
+    moreVideoPosts = document.getElementById('video_more_posts')
+    moreArticlePosts = document.getElementById('article_more_posts')
+    hideDiv(moreAllPosts)
+    hideDiv(moreVideoPosts)
+    hideDiv(moreArticlePosts)
+  }

@@ -4,7 +4,22 @@ class BlogPostsController < ApplicationController
   # GET /blog_posts
   # GET /blog_posts.json
   def index
-    @blog_posts = BlogPost.page params[:page]
+    # blog = BlogPost.search "simple"
+    # blog.each do |blog_search|
+    #   puts blog_search.name
+    #   # debugger
+    # end
+    @video_posts = []
+    @article_posts = []
+    @blog_posts = BlogPost.all
+    @blog_posts.each do |blog|
+      if blog.media_type == 'Video Post'
+        @video_posts.push(blog)
+      elsif blog.media_type == 'Blog Post'
+        @article_posts.push(blog)
+      end
+
+    end
   end
 
   # GET /blog_posts/1
@@ -27,15 +42,13 @@ class BlogPostsController < ApplicationController
   def create
     @blog_post = BlogPost.new(blog_post_params)
 
-    respond_to do |format|
-      if @blog_post.save! name: @blog_post.seo_title
-        format.html { redirect_to @blog_post, notice: 'Blog post was successfully created.' }
-        format.json { render :show, status: :created, location: @blog_post }
-      else
-        format.html { render :new }
-        format.json { render json: @blog_post.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    @blog_post.save!
+    redirect_to @blog_post
+      # name: @blog_post.seo_title
+      # BlogPost.reindex
+      # format.html { redirect_to @blog_post, notice: 'Blog post was successfully created.' }
+      # format.json { render :show, status: :created, location: @blog_post }
   end
 
   # PATCH/PUT /blog_posts/1
