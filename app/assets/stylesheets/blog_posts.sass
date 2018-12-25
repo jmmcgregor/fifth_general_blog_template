@@ -16,156 +16,215 @@ $sfs-green: #39b54a
 $sfs-dark-grey: #929497
 $sfs-white-smoke: #f5f3f3
 
-.entry_page
-  text-align: center
-  max-width: 1000px
-  width: 85%
-  margin-left: auto
-  margin-right: auto
-  font-family: 'cerapro-regular'
-  display: flex
-  flex-direction: column
-  align-items: center
-  h1
-    // font-family: 'cerapro-regular'
-    font-size: 3rem
-    letter-spacing: .25rem
-    margin-bottom: 4rem
-  .form-container
-    width: 100%
-    border: 2px solid black
-    margin-bottom: 3rem
-    form
-      width: 100%
-      display: flex
-      align-items: center
-      justify-content: center
-      input
-        font-family: 'cerapro-regular'
-        font-size: 1.5rem
-        border: none
-        text-align: center
-      #title
-        width: 100%
-        height: 3rem
-        border-color: black
-        padding-top: .2rem
-        padding-left: 1.75rem
-      #title::placeholder
-          text-align: center
-          font-family: 'cerapro-thin'
-          font-size: 1.5rem
-          padding-left: 1.5rem
-          color: black
-      input[type="image"]
-        height: 1.5rem
-        margin-right: .5rem
-  .entry_filters
-    width: 50%
+body
+  font-size: 200px
+  .entry_page
+    text-align: center
+    max-width: 1000px
+    width: 85%
+    margin-left: auto
+    margin-right: auto
+    font-family: 'cerapro-regular'
     display: flex
-    justify-content: space-between
-    margin-bottom: 2.5rem
-    button
-      width: 10rem
-      height: 2.5rem
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-      border: none
-      font-family: 'cerapro-bold'
-      font-size: 1rem
-      letter-spacing: .1rem
-      background-color: $sfs-white-smoke
-      &:hover
-        transform: scale(1.02)
-        color: white
-        background-color: $sfs-green
-    #all_media_button
-      background-color: $sfs-green
-      color: white
-  #all_container
-    width: 100%
-  #video_container
-    width: 100%
-    display: none
-  #article_container
-    width: 100%
-    display: none
-  .entry_container
-    width: 100%
-    display: grid
-    grid-template-columns: repeat(auto-fill, minmax(200px, 30%))
-    grid-gap: 30px
-    justify-content: space-between
+    flex-direction: column
     align-items: center
-    a
-      text-decoration: none
-      &:hover
-        background: transparent
-        background-color: transparent
-    .entry
-      position: relative
+    #bottom_message
+      background-color: $sfs-white-smoke
       width: 100%
-      height: 100%
-      margin-bottom: 25px
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-      transition: transform .3s
-      &:hover
-        transform: scale(1.02)
-      &:selector
-      .entry_image
+      p
+        font-family: 'cerapro-regular'
+        margin-right: auto
+        margin-left: auto
+        width: 75%
+        text-align: center
+        font-size: 1.3rem
+        letter-spacing: 1px
+        line-height: 2rem
+    h1
+      // font-family: 'cerapro-regular'
+      font-size: 3rem
+      letter-spacing: .25rem
+      margin-bottom: 4rem
+      color: black
+      line-height: 3rem
+      @media only screen and (max-width: 675px)
+        font-size: 2.5rem
+    .form-container
+      width: 100%
+      border: 2px solid black
+      margin-bottom: 3rem
+      form
         width: 100%
-        height: 150px
-        background-size: cover
-      .entry_title
-        height: 50px
-        margin-left: .75rem
         display: flex
         align-items: center
-        color: black
-        p
-          text-align: left
+        justify-content: center
+        input
           font-family: 'cerapro-regular'
-          font-size: 1rem
-      input
-        position: absolute
-        width: 100%
-        right: 0
-        top: 16%
-        height: 5.5rem
-  .video_container
-    display: none
-
-  #see_more_button
-    width: 10rem
-    height: 3rem
-    background-color: black
-    color: white
-    font-family: 'cerapro-regular'
-    font-size: 1rem
-    margin-top: 5rem
-    margin-bottom: 10rem
-  #see_more_link
-      background: black
+          font-size: 1.5rem
+          border: none
+          text-align: center
+        #title
+          width: 100%
+          height: 3rem
+          border-color: black
+          padding-top: .2rem
+          padding-left: 1.75rem
+        #title::placeholder
+            text-align: center
+            font-family: 'cerapro-thin'
+            font-size: 1.5rem
+            padding-left: 1.5rem
+            color: black
+            letter-spacing: 1px
+        input[type="image"]
+          height: 1.5rem
+          margin-right: .5rem
+    .entry_filters
+      width: 50%
+      display: flex
+      justify-content: space-between
+      margin-bottom: 2.5rem
+      @media only screen and (max-width: 1250px)
+        width: 60%
+      @media only screen and (max-width: 1050px)
+        width: 70%
+      @media only screen and (max-width: 950px)
+        width: 80%
+      @media only screen and (max-width: 800px)
+        width: 95%
+      @media only screen and (max-width: 675px)
+        width: 98%
       button
+        width: 10rem
+        height: 2.5rem
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+        border: none
+        font-family: 'cerapro-bold'
+        font-size: 1rem
+        letter-spacing: .1rem
+        background-color: $sfs-white-smoke
+        @media only screen and (max-width: 650px)
+          width: 8rem
+          height: 2rem
+          font-size: .8rem
         &:hover
-          cursor: pointer
+          transform: scale(1.02)
+          color: white
+          background-color: $sfs-green
+      #all_media_button
+        background-color: $sfs-green
+        color: white
+    #all_container
+      width: 100%
+    #video_container
+      width: 100%
+      display: none
+    #article_container
+      width: 100%
+      display: none
+    .entry_container
+      width: 100%
+      display: grid
+      grid-template-columns: repeat(auto-fill, minmax(200px, 30%))
+      grid-gap: 30px
+      justify-content: space-between
+      align-items: center
+      @media only screen and (max-width: 950px)
+        grid-template-columns: repeat(2, minmax(200px, 45%))
+      @media only screen and (max-width: 700px)
+        grid-template-columns: repeat(1, minmax(200px, 80%))
+        justify-content: center
+      a
+        text-decoration: none
+        &:hover
+          background: transparent
+          background-color: transparent
+      .entry
+        position: relative
+        width: 100%
+        height: 100%
+        margin-bottom: 25px
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+        transition: transform .3s
+        &:hover
+          transform: scale(1.02)
+        .entry_image
+          width: 100%
+          height: 10rem
+          background-size: cover
+          @media only screen and (max-width: 1050px)
+            height: 9rem
+          @media only screen and (max-width: 950px)
+            height: 12rem
+          @media only screen and (max-width: 950px)
+            height: 10rem
+          @media only screen and (max-width: 700px)
+            height: 15rem
+        .entry_title
+          height: 50px
+          margin-left: .75rem
+          margin-right: .75rem
+          display: flex
+          align-items: center
+          color: black
 
-  #all_more_posts
-    display: none
-  #video_more_posts
-    display: none
-  #article_more_posts
-    display: none
+          p
+            text-align: left
+            font-family: 'cerapro-regular'
+            font-size: 1rem
+            @media only screen and (max-width: 1250px)
+              font-size: .8rem
+            @media only screen and (max-width: 1050px)
+              font-size: .74rem
+            @media only screen and (max-width: 950px)
+              font-size: .8rem
+            @media only screen and (max-width: 700px)
+              font-size: 1rem
+        input
+          position: absolute
+          width: 100%
+          right: 0
+          top: 16%
+          height: 5.5rem
+    .video_container
+      display: none
+
+    #see_more_button
+      width: 10rem
+      height: 3rem
+      background-color: black
+      color: white
+      font-family: 'cerapro-regular'
+      font-size: 1rem
+      margin-top: 3rem
+      margin-bottom: 6rem
+    #see_more_link
+        background: black
+        button
+          &:hover
+            cursor: pointer
+
+    #all_more_posts
+      display: none
+    #video_more_posts
+      display: none
+    #article_more_posts
+      display: none
 
 
 
 
 
 
-
+//SHOW PAGE
 #body-container
   display: flex
   flex-direction: row
+  width: 80%
+  margin-right: auto
+  margin-left: auto
   #body-right
+
   #body-right-column
     width: 90%
     margin-right: auto
@@ -183,10 +242,13 @@ $sfs-white-smoke: #f5f3f3
       border: none
       background-color: $sfs-white-smoke
       flex-direction: column
+      margin-right: auto
+      margin-left: auto
       p
         font-family: 'cerapro-bold'
-        font-size: 1.25rem
+        font-size: 1.2vw
         letter-spacing: 1px
+        text-align: center
     #side-bar
       margin-top: 3rem
       width: 100%
@@ -197,36 +259,43 @@ $sfs-white-smoke: #f5f3f3
         a
           width: 100%
           margin-bottom: 2rem
-    #questions-box
-      background-color: $sfs-green
-      display: flex
-      flex-direction: column
-      justify-content: center
-      height: 25rem
-      align-items: center
-      padding: 1rem
-      #questions-content
-        width: 100%
-        height: 95%
+        p
+          font-size: .68vw
+        .entry_image
+          @media only screen and (max-width: 1050px)
+            height: 
+      #questions-box
+        background-color: $sfs-green
         display: flex
         flex-direction: column
-        justify-content: space-between
+        justify-content: center
+        height: 25rem
         align-items: center
-        p
-          font-family: 'cerapro-regular'
-          color: white
-          font-size: 3rem
-          text-align: center
-          line-height: 3rem
-          margin-top: 0
-        button
-          width: 10rem
-          height: 3rem
-          background-color: black
-          color: white
-          font-family: 'cerapro-regular'
-          border: none
-          letter-spacing: 1px
+        // padding: 1rem
+        width: 100%
+        margin: none
+        #questions-content
+          width: 100%
+          height: 95%
+          display: flex
+          flex-direction: column
+          justify-content: center
+          align-items: center
+          p
+            font-family: 'cerapro-regular'
+            color: white
+            font-size: 1.8vw
+            text-align: center
+            line-height: 3rem
+            margin-top: 0
+          button
+            width: 10vw
+            height: 3vw
+            background-color: black
+            color: white
+            font-family: 'cerapro-regular'
+            border: none
+            letter-spacing: 1px
 
 
 
@@ -236,12 +305,17 @@ $sfs-white-smoke: #f5f3f3
 
 
   #body-left
-    width: 80%
+    width: 100%
     margin-left: 5rem
+    #blog_body
+      strong
+        font-size: 1.5rem
+        font-family: 'cerapro-bold'
     #title
-      width: 80%
+      width: 90%
       height: auto
       p
+        margin-top: 30px
         font-family: 'cerapro-regular'
         font-size: 3.5rem
         line-height: 4rem
@@ -254,7 +328,7 @@ $sfs-white-smoke: #f5f3f3
     p
       font-family: 'cerapro-thin'
     div
-      width: 90%
+      width: 95%
       font-family: 'cerapro-regular'
       font-size: 1rem
       line-height: 2rem
@@ -268,3 +342,19 @@ $sfs-white-smoke: #f5f3f3
         font-family: 'cerapro-regular'
         font-size: 2rem
         color: $sfs-green
+
+
+#bread_crumb
+  a
+    text-decoration: none
+    font-family: 'cerapro-bold'
+    letter-spacing: 1.5px
+    color: black
+    font-size: 1.1rem
+    background-color: white
+    &:first-child
+      color: $sfs-dark-grey
+    &:hover
+      text-decoration: none
+      transform: scale(1.02)
+      color: $sfs-green

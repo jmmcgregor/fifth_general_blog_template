@@ -1,15 +1,13 @@
+
+
 class BlogPost < ApplicationRecord
 
   #** DATABASE SEARCH **#
-  # searchkick
-  # def search_data
-  # {
-  #   name: name,
-  # }
+  searchable do
+    string :title
+  end
 
 
-  #** PAGINATION **#
-  # paginates_per 6
   has_one_attached :main_image
 
   #** SEO TITLE URL **#

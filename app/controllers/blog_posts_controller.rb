@@ -1,14 +1,10 @@
 class BlogPostsController < ApplicationController
   before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
-
+  add_breadcrumb "LEARNING CENTER", "/"
   # GET /blog_posts
   # GET /blog_posts.json
   def index
-    # blog = BlogPost.search "simple"
-    # blog.each do |blog_search|
-    #   puts blog_search.name
-    #   # debugger
-    # end
+
     @video_posts = []
     @article_posts = []
     @blog_posts = BlogPost.all
@@ -25,6 +21,7 @@ class BlogPostsController < ApplicationController
   # GET /blog_posts/1
   # GET /blog_posts/1.json
   def show
+    add_breadcrumb @blog_post.title.upcase, @blog_post.slug
     @blog_post = BlogPost.friendly.find(params[:id])
   end
 
