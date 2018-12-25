@@ -3,10 +3,13 @@
 class BlogPost < ApplicationRecord
 
   #** DATABASE SEARCH **#
-  searchable do
-    string :title
-  end
+  searchkick word_middle: [:title]
 
+  def search_data
+    {
+      title: title
+    }
+  end
 
   has_one_attached :main_image
 

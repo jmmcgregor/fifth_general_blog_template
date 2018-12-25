@@ -5,9 +5,17 @@ class BlogPostsController < ApplicationController
   # GET /blog_posts.json
   def index
 
+    search = params[:title].present? ? params[:title] : nil
     @video_posts = []
     @article_posts = []
+
     @blog_posts = BlogPost.all.order(created_at: :desc)
+    @blog_posts = if search    
+      BlogPost.search(search)
+    else
+      BlogPost.all.order(created_at: :desc)
+    end
+
     @blog_posts.each do |blog|
       if blog.media_type == 'Video Post'
         @video_posts.push(blog)
