@@ -7,7 +7,7 @@ class BlogPostsController < ApplicationController
 
     @video_posts = []
     @article_posts = []
-    @blog_posts = BlogPost.all
+    @blog_posts = BlogPost.all.order(created_at: :desc)
     @blog_posts.each do |blog|
       if blog.media_type == 'Video Post'
         @video_posts.push(blog)

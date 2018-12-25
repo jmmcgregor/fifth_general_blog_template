@@ -188,7 +188,6 @@ body
           height: 5.5rem
     .video_container
       display: none
-
     #see_more_button
       width: 10rem
       height: 3rem
@@ -203,7 +202,6 @@ body
         button
           &:hover
             cursor: pointer
-
     #all_more_posts
       display: none
     #video_more_posts
@@ -212,46 +210,78 @@ body
       display: none
 
 
+#pre_blog_body
+  width: 80%
+  margin-left: auto
+  margin-right: auto
+  #bread_crumb
+    a
+      text-decoration: none
+      font-family: 'cerapro-bold'
+      letter-spacing: 1.5px
+      color: black
+      font-size: 1.1rem
+      background-color: white
+      &:first-child
+        color: $sfs-dark-grey
+      &:hover
+        text-decoration: none
+        transform: scale(1.02)
+        color: $sfs-green
+  #pre_blog_titles
+    display: flex
+    flex-direction: row
+    width: 100%
+    margin-bottom: 50px
+    margin-right: auto
+    margin-left: auto
 
-
-
-
-//SHOW PAGE
+    #title
+      width: 80%
+      height: auto
+      align-self: flex-end
+      p
+        font-family: 'cerapro-regular'
+        font-size: 3.5rem
+        line-height: 4rem
+        margin-bottom: 0
 #body-container
-  display: flex
-  flex-direction: row
+  display: grid
+  grid-template-columns: 5fr 2fr
   width: 80%
   margin-right: auto
   margin-left: auto
+  @media only screen and (max-width: 1050px)
+    grid-template-columns: 1fr
   #body-right
-
+    @media only screen and (max-width: 1050px)
+      display: none
   #body-right-column
-    width: 90%
-    margin-right: auto
-    margin-left: auto
-    margin-top: 5rem
+    width: 100%
     .entry_page
       width: 100%
+      margin-top: 3rem
     #text-box
-      width: 100%
+      align-self: flex-end
       height: 3rem
-      display: flex
-      align-items: center
-      justify-content: center
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
       border: none
       background-color: $sfs-white-smoke
-      flex-direction: column
       margin-right: auto
       margin-left: auto
       p
+        height: 100%
         font-family: 'cerapro-bold'
-        font-size: 1.2vw
+        font-size: 1vw
         letter-spacing: 1px
         text-align: center
+        margin: 0
+        vertical-align: middle
+        line-height: 48px
+
     #side-bar
-      margin-top: 3rem
       width: 100%
+
       .entry_container
         display: flex
         flex-direction: column
@@ -262,8 +292,28 @@ body
         p
           font-size: .68vw
         .entry_image
-          @media only screen and (max-width: 1050px)
-            height: 
+          height: 12rem
+          @media only screen and (max-width: 1300px)
+            height: 9rem
+            grid-template-columns: 5fr 1fr
+          @media only screen and (max-width: 1200px)
+            height: 10rem
+            grid-template-columns: 5fr 1fr
+          @media only screen and (max-width: 1100px)
+            height: 8rem
+            grid-template-columns: 5fr 1fr
+          @media only screen and (max-width: 900px)
+            height: 7rem
+        .entry_title
+          p
+            font-size: .7vw
+            @media only screen and (max-width: 1300px)
+              line-height: 14px
+              font-size: 1vw
+
+
+
+
       #questions-box
         background-color: $sfs-green
         display: flex
@@ -271,7 +321,6 @@ body
         justify-content: center
         height: 25rem
         align-items: center
-        // padding: 1rem
         width: 100%
         margin: none
         #questions-content
@@ -279,15 +328,19 @@ body
           height: 95%
           display: flex
           flex-direction: column
-          justify-content: center
+          justify-content: space-around
           align-items: center
           p
             font-family: 'cerapro-regular'
             color: white
-            font-size: 1.8vw
+            font-size: 2.5vw
             text-align: center
             line-height: 3rem
             margin-top: 0
+            @media only screen and (min-width: 1428px)
+              font-size: 2.6vw
+            @media only screen and (max-width: 1200px)
+              line-height: 2rem
           button
             width: 10vw
             height: 3vw
@@ -306,19 +359,16 @@ body
 
   #body-left
     width: 100%
-    margin-left: 5rem
+    #video_upload
+      iframe
+        @media only screen and (max-width: 1450px)
+          height: 25rem
+        @media only screen and (max-width: 900px)
+          height: 18rem
     #blog_body
       strong
-        font-size: 1.5rem
+        font-size: 2.2rem
         font-family: 'cerapro-bold'
-    #title
-      width: 90%
-      height: auto
-      p
-        margin-top: 30px
-        font-family: 'cerapro-regular'
-        font-size: 3.5rem
-        line-height: 4rem
     iframe
       width: 90%
       height: 32rem
@@ -330,8 +380,8 @@ body
     div
       width: 95%
       font-family: 'cerapro-regular'
-      font-size: 1rem
-      line-height: 2rem
+      font-size: 1.2rem
+      line-height: 2.3rem
     #date
       p
         font-family: 'cerapro-bold'
@@ -342,19 +392,3 @@ body
         font-family: 'cerapro-regular'
         font-size: 2rem
         color: $sfs-green
-
-
-#bread_crumb
-  a
-    text-decoration: none
-    font-family: 'cerapro-bold'
-    letter-spacing: 1.5px
-    color: black
-    font-size: 1.1rem
-    background-color: white
-    &:first-child
-      color: $sfs-dark-grey
-    &:hover
-      text-decoration: none
-      transform: scale(1.02)
-      color: $sfs-green

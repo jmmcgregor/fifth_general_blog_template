@@ -17,6 +17,8 @@
       - @blog_posts.take(9).each_with_index do |blog_post, index|
         = link_to(blog_post_url(blog_post, @blog_post))
           .entry
+            - if blog_post.media_type == 'Video Post'
+              = image_submit_tag("main-play-button 2.svg")
             .entry_image style='background-image: url(#{rails_blob_path(blog_post.main_image)})'
             .entry_title
               p = blog_post.title
