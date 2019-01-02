@@ -3,7 +3,7 @@
 class BlogPost < ApplicationRecord
 
   #** DATABASE SEARCH **#
-  searchkick word_middle: [:title]
+  searchkick word_start: [:title]
 
   def search_data
     {
