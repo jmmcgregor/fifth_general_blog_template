@@ -4,13 +4,13 @@ class BlogPostsController < ApplicationController
   # GET /blog_posts
   # GET /blog_posts.json
   def index
-
+    @title = "Learning Center - Sports Field Solutions"
     search = params[:title].present? ? params[:title] : nil
     @video_posts = []
     @article_posts = []
-
+    @showAll = true
     @blog_posts = BlogPost.all.order(created_at: :desc)
-    @blog_posts = if search    
+    @blog_posts = if search
       BlogPost.search(search)
     else
       BlogPost.all.order(created_at: :desc)
@@ -29,12 +29,14 @@ class BlogPostsController < ApplicationController
   # GET /blog_posts/1
   # GET /blog_posts/1.json
   def show
+    @title = @blog_post.title
     add_breadcrumb @blog_post.title.upcase, @blog_post.slug
     @blog_post = BlogPost.friendly.find(params[:id])
   end
 
   # GET /blog_posts/new
   def new
+    @title = "New Blog Post"
     @blog_post = BlogPost.new
   end
 
@@ -79,6 +81,8 @@ class BlogPostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
