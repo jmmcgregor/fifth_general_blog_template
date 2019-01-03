@@ -9,7 +9,9 @@ class BlogPostsController < ApplicationController
     @video_posts = []
     @article_posts = []
     @showAll = true
+
     @blog_posts = BlogPost.all.order(created_at: :desc)
+
     @blog_posts = if search
       BlogPost.search(search)
     else
@@ -29,6 +31,7 @@ class BlogPostsController < ApplicationController
   # GET /blog_posts/1
   # GET /blog_posts/1.json
   def show
+    @side_bar_posts = BlogPost.limit(3).order("RANDOM()").where.not(id: @blog_post.id)
     @title = @blog_post.title
     add_breadcrumb @blog_post.title.upcase, @blog_post.slug
     @blog_post = BlogPost.friendly.find(params[:id])
