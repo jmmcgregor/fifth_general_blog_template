@@ -2,33 +2,561 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#entry_page
-  text-align: center
-  max-width: 1000px
-  width: 85%
+@font-face
+  font-family: 'cerapro-regular'
+  src: font-url('cerapro-regular-webfont.woff') format('woff')
+@font-face
+  font-family: 'cerapro-thin'
+  src: font-url('cerapro-thin-webfont.woff') format('woff')
+@font-face
+  font-family: 'cerapro-bold'
+  src: font-url('cerapro-bold-webfont.woff') format('woff')
+
+//COLORS
+$sfs-green: #39b54a
+$sfs-dark-grey: #929497
+$sfs-white-smoke: #f5f3f3
+
+body
+  .entry_page
+    text-align: center
+    max-width: 1000px
+    width: 85%
+    margin-left: auto
+    margin-right: auto
+    font-family: 'cerapro-regular'
+    display: flex
+    flex-direction: column
+    align-items: center
+    #bottom_message
+      background-color: $sfs-white-smoke
+      width: 100%
+      p
+        font-family: 'cerapro-regular'
+        margin-right: auto
+        margin-left: auto
+        width: 75%
+        text-align: center
+        font-size: 1.3rem
+        letter-spacing: 1px
+        line-height: 2rem
+    h1
+      // font-family: 'cerapro-regular'
+      font-size: 3rem
+      letter-spacing: .25rem
+      margin-bottom: 4rem
+      color: black
+      line-height: 3rem
+      @media screen and (max-width: 675px)
+        font-size: 2.5rem
+    .form-container
+      width: 100%
+      border: 2px solid black
+      margin-bottom: 3rem
+      form
+        width: 100%
+        display: flex
+        align-items: center
+        justify-content: center
+        input
+          font-family: 'cerapro-regular'
+          font-size: 1.5rem
+          border: none
+          text-align: center
+          margin-right: 1rem
+        #title
+          width: 100%
+          height: 3rem
+          border-color: black
+          line-height: 3rem
+        #title::placeholder
+            text-align: center
+            height: 3rem
+            font-family: 'cerapro-thin'
+            font-size: 1.5rem
+            padding-left: 1.5rem
+            color: black
+            letter-spacing: 1px
+            margin-left: auto
+            margin-right: auto
+            @media screen and (max-width: 550px)
+              font-size: 1rem
+            @media screen and (max-width: 375px)
+              font-size: .9rem
+              padding-left: 0
+
+
+
+        input[type="image"]
+          height: 1.5rem
+          margin-right: .5rem
+    .entry_filters
+      width: 50%
+      display: flex
+      justify-content: space-between
+      margin-bottom: 2.5rem
+      @media screen and (max-width: 1250px)
+        width: 60%
+      @media screen and (max-width: 1050px)
+        width: 70%
+      @media screen and (max-width: 950px)
+        width: 80%
+      @media screen and (max-width: 800px)
+        width: 95%
+      @media screen and (max-width: 675px)
+        width: 98%
+      @media screen and (max-width: 550px)
+        width: 100%
+      button
+        width: 10rem
+        height: 2.5rem
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+        border: none
+        font-family: 'cerapro-bold'
+        font-size: 1rem
+        letter-spacing: .1rem
+        background-color: $sfs-white-smoke
+        @media screen and (max-width: 650px)
+          width: 8rem
+          height: 2rem
+          font-size: .8rem
+        @media screen and (max-width: 550px)
+          width: 7rem
+        @media screen and (max-width: 475px)
+          width: 6rem
+        @media screen and (max-width: 425px)
+          width: 5.5rem
+          height: 2.2rem
+        @media screen and (max-width: 385px)
+          width: 5rem
+          height: 2.5rem
+          font-size: .7rem
+        @media screen and (max-width: 360px)
+          width: 4.5rem
+          font-size: .6rem
+        @media screen and (max-width: 330px)
+          width: 4rem
+        &:hover
+          transform: scale(1.02)
+          color: white
+          background-color: $sfs-green
+      #all_media_button
+        background-color: $sfs-green
+        color: white
+    #all_container
+      width: 100%
+    #video_container
+      width: 100%
+      display: none
+    #article_container
+      width: 100%
+      display: none
+    .entry_container
+      width: 100%
+      display: grid
+      grid-template-columns: repeat(auto-fill, minmax(200px, 30%))
+      grid-gap: 30px
+      justify-content: space-between
+      align-items: center
+      @media screen and (max-width: 950px)
+        grid-template-columns: repeat(2, minmax(200px, 45%))
+      @media screen and (max-width: 700px)
+        grid-template-columns: repeat(1, minmax(200px, 80%))
+        justify-content: center
+      @media screen and (max-width: 575px)
+        grid-template-columns: repeat(1, minmax(200px, 100%))
+      a
+        text-decoration: none
+        &:hover
+          background: transparent
+          background-color: transparent
+      .entry
+        position: relative
+        width: 100%
+        height: 100%
+        margin-bottom: 25px
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+        transition: transform .3s
+        &:hover
+          transform: scale(1.02)
+        .entry_image
+          width: 100%
+          height: 10rem
+          background-size: cover
+          @media screen and (max-width: 1050px)
+            height: 9rem
+          @media screen and (max-width: 950px)
+            height: 12rem
+          @media screen and (max-width: 950px)
+            height: 10rem
+          @media screen and (max-width: 700px)
+            height: 15rem
+          @media screen and (max-width: 500px)
+            height: 12rem
+          @media screen and (max-width: 400px)
+            height: 10rem
+
+        .entry_title
+          height: 50px
+          margin-left: .75rem
+          margin-right: .75rem
+          display: flex
+          align-items: center
+          color: black
+          p
+            text-align: left
+            font-family: 'cerapro-regular'
+            font-size: 1rem
+            @media screen and (max-width: 1250px)
+              font-size: .8rem
+            @media screen and (max-width: 1050px)
+              font-size: .74rem
+            @media screen and (max-width: 950px)
+              font-size: .8rem
+            @media screen and (max-width: 700px)
+              font-size: 1rem
+            @media screen and (max-width: 425px)
+              font-size: .9rem
+            @media screen and (max-width: 360px)
+              font-size: .8rem
+        input
+          position: absolute
+          width: 100%
+          right: 0
+          top: 16%
+          height: 5.5rem
+    .video_container
+      display: none
+    .see_more_button
+      width: 10rem
+      height: 3rem
+      background-color: black
+      color: white
+      font-family: 'cerapro-regular'
+      font-size: 1rem
+      margin-top: 3rem
+      margin-bottom: 6rem
+    #see_more_link
+        background: none
+        background-color: black
+        width: 10rem
+        height: 3rem
+        button
+          &:hover
+            cursor: pointer
+    #all_more_posts
+      display: none
+    #video_more_posts
+      display: none
+    #article_more_posts
+      display: none
+
+
+#pre_blog_body
+  width: 80%
   margin-left: auto
   margin-right: auto
-  form
-    width: 70%
-    margin-left: auto
-    margin-right: auto
-  .entry_container
-    width: 70%
-    margin-left: auto
-    margin-right: auto
-    display: grid
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
-    grid-gap: 30px
-    justify-content: space-between
-    .entry
-      width: 265px
-      height: 200px
-      margin-bottom: 50px
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-      transition: transform .3s
+  @media screen and (max-width: 825px)
+
+  @media screen and (max-width: 1450px)
+    width: 90%
+  @media screen and (max-width: 1200px)
+    width: 95%
+  @media screen and (max-width: 1125px)
+    width: 97%
+  @media screen and (max-width: 1075px)
+    width: 98%
+  @media screen and (max-width: 1050px)
+    width: 80%
+  #bread_crumb
+    a
+      text-decoration: none
+      font-family: 'cerapro-bold'
+      letter-spacing: 1.5px
+      color: black
+      font-size: 1.1rem
+      background-color: white
+      @media screen and (max-width: 775px)
+        font-size: 1rem
+      @media screen and (max-width: 675px)
+        font-size: .8rem
+      @media screen and (max-width: 525px)
+        font-size: .6rem
+      &:first-child
+        color: $sfs-dark-grey
       &:hover
+        text-decoration: none
         transform: scale(1.02)
-      .entry_image
+        color: $sfs-green
+  #pre_blog_titles
+    display: flex
+    flex-direction: row
+    width: 100%
+    margin-bottom: 50px
+    margin-right: auto
+    margin-left: auto
+
+    #title
+      width: 70%
+      height: auto
+      align-self: flex-end
+
+      @media screen and (max-width: 1050px)
+        width: 90%
+      @media screen and (max-width: 625px)
+        width: 95%
+      @media screen and (max-width: 550px)
         width: 100%
-        height: 150px
-        background-size: cover
+
+      p
+        font-family: 'cerapro-regular'
+        font-size: 3.5rem
+        line-height: 4rem
+        margin-bottom: 0
+        @media screen and (max-width: 775px)
+          font-size: 3rem
+        @media screen and (max-width: 675px)
+          font-size: 2.5rem
+          line-height: 3rem
+        @media screen and (max-width: 525px)
+          font-size: 2rem
+#body-container
+  display: grid
+  grid-template-columns: 3fr 1fr
+  width: 80%
+  margin-right: auto
+  margin-left: auto
+  @media screen and (max-width: 1450px)
+    width: 90%
+  @media screen and (max-width: 1200px)
+    width: 95%
+  @media screen and (max-width: 1125px)
+    width: 97%
+  @media screen and (max-width: 1075px)
+    width: 98%
+  @media screen and (max-width: 1050px)
+    grid-template-columns: 80%
+    justify-content: center
+
+
+  #body-right
+    @media screen and (max-width: 1050px)
+      display: none
+  #body-right-column
+    width: 100%
+    height: 100%
+    .entry_page
+      width: 100%
+      height: 100%
+      margin-top: 3rem
+    #text-box
+      align-self: flex-end
+      height: 3rem
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+      border: none
+      background-color: $sfs-white-smoke
+      margin-right: auto
+      margin-left: auto
+      p
+        height: 100%
+        font-family: 'cerapro-bold'
+        font-size: 1rem
+        letter-spacing: 1px
+        text-align: center
+        margin: 0
+        vertical-align: middle
+        line-height: 48px
+
+    #side-bar
+      width: 100%
+      .entry_container
+        display: flex
+        flex-direction: column
+        width: 100%
+        a
+          width: 100%
+          margin-bottom: 2rem
+        p
+          font-size: .68rem
+        .entry_image
+          height: 12rem
+          @media screen and (max-width: 1300px)
+            height: 9rem
+            grid-template-columns: 5fr 1fr
+          @media screen and (max-width: 1200px)
+            height: 10rem
+            grid-template-columns: 5fr 1fr
+          @media screen and (max-width: 1100px)
+            height: 8rem
+            grid-template-columns: 5fr 1fr
+          @media screen and (max-width: 900px)
+            height: 7rem
+
+        .entry_title
+          p
+            font-size: .9rem
+            line-height: 20px
+            @media screen and (max-width: 1300px)
+              line-height: 14px
+              font-size: .8rem
+
+
+
+
+    #questions-box
+      background-color: $sfs-green
+      display: flex
+      flex-direction: column
+      justify-content: center
+      height: 25rem
+      align-items: center
+      width: 100%
+      margin: none
+      position: sticky
+      top: 5%
+      #questions-content
+        width: 100%
+        height: 95%
+        display: grid
+        grid-template-rows: 1fr 1fr 1fr
+        align-items: center
+        p
+          font-family: 'cerapro-regular'
+          color: white
+          font-size: 2.2rem
+          text-align: center
+          line-height: 3rem
+          margin-top: 0
+          margin-bottom: 0
+          @media screen and (max-width: 1450px)
+              font-size: 2.2rem
+              padding: 10px
+          @media screen and (max-width: 1200px)
+            line-height: 2.5rem
+            padding: 10px
+        a
+          &:hover
+            background: none
+        button
+          width: 10rem
+          height: 3rem
+          background-color: black
+          color: white
+          font-family: 'cerapro-regular'
+          border: none
+          letter-spacing: 1px
+          font-size: .9rem
+          align-self: center
+          &:hover
+            cursor: pointer
+
+
+
+
+
+
+
+
+  #body-left
+    width: 100%
+    .upload
+      width: 95%
+      iframe
+        width: 100%
+        height: 32rem
+        @media screen and (max-width: 950px)
+          height: 25rem
+        @media screen and (max-width: 750px)
+          height: 20rem
+        @media screen and (max-width: 650px)
+          height: 15rem
+        @media screen and (max-width: 475px)
+          height: 12rem
+        @media screen and (max-width: 365px)
+          height: 10rem
+      img
+        width: 100%
+        height: 32rem
+        @media screen and (max-width: 1450px)
+          height: 25rem
+        @media screen and (max-width: 700px)
+          height: 20rem
+        @media screen and (max-width: 650px)
+          height: 15rem
+        @media screen and (max-width: 475px)
+          height: 12rem
+        @media screen and (max-width: 365px)
+          height: 10rem
+    #blog_body
+      width: 100%
+      ol
+        font-family: 'cerapro-regular'
+        font-size: 1.2rem
+        line-height: 2rem
+        padding: 40px
+      a
+        text-decoration: none
+        color: $sfs-green
+        overflow-wrap: break-word
+        &:hover
+          background: none
+          color: $sfs-dark-grey
+      strong
+        font-size: 2.2rem
+        font-family: 'cerapro-bold'
+      figure
+        margin: inherit
+        width: 100%
+        height: 32rem
+        @media screen and (max-width: 1450px)
+          height: 25rem
+        @media screen and (max-width: 900px)
+          height: 18rem
+        img
+          width: 100%
+          height: 100%
+          @media screen and (max-width: 650px)
+            height: 15rem
+          @media screen and (max-width: 475px)
+            height: 12rem
+          @media screen and (max-width: 365px)
+            height: 10rem
+        span
+          display: none
+        a
+          cursor: auto
+          &:hover
+            background: none
+
+
+    iframe
+      width: 90%
+      height: 32rem
+    strong
+      font-family: 'cerapro-regular'
+      font-size: 3rem
+    p
+      font-family: 'cerapro-thin'
+    div
+      width: 95%
+      font-family: 'cerapro-regular'
+      font-size: 1.2rem
+      line-height: 2.3rem
+    #date
+      p
+        font-family: 'cerapro-bold'
+        font-size: 1.25rem
+        letter-spacing: 1px
+        @media screen and (max-width: 675px)
+          font-size: 1rem
+        @media screen and (max-width: 525px)
+          font-size: .8rem
+    #author
+      p
+        font-family: 'cerapro-regular'
+        font-size: 2rem
+        color: $sfs-green
+        @media screen and (max-width: 675px)
+          font-size: 1.5rem
+        @media screen and (max-width: 525px)
+          font-size: 1.3rem

@@ -69,6 +69,6 @@ class BlogUsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_user_params
-      params.require(:blog_user).permit(:name, :email)
+      params.require(:blog_user).permit(:name, :email, :password)
     end
 end

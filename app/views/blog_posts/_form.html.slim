@@ -1,42 +1,47 @@
-= form_for @blog_post do |f|
-  - if @blog_post.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@blog_post.errors.count, "error")} prohibited this blog_post from being saved:"
-      ul
-        - @blog_post.errors.full_messages.each do |message|
-          li = message
+doctype html
+html
+  head
+    title @blog_post.title
+#new_blog_form
+  = form_for @blog_post do |f|
+    - if @blog_post.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@blog_post.errors.count, "error")} prohibited this blog_post from being saved:"
+        ul
+          - @blog_post.errors.full_messages.each do |message|
+            li = message
 
-  .field
-    = f.label :media_type
-    = f.select :media_type, options_for_select(["Blog Post", "Video Post"]), {:include_blank => 'Select One'}, required: true
-  .field
-    = f.label :title
-    = f.text_field :title, required: true
-  .field
-    = f.label :main_image
-    = f.file_field :main_image, required: true
-  .field
-    = f.label :video_upload
-    = f.text_field :video_upload, required: true
-  .field
-    = f.label :body
-    = f.text_area :body, id: :body, required: true
-    trix-editor input='body'
-  .field
-    = f.label :seo_title
-    = f.text_field :seo_title, required: true
-  .field
-    = f.label :seo_meta_description
-    = f.text_field :seo_meta_description, required: true
-  .actions = f.submit
+    .field
+      = f.label :media_type
+      = f.select :media_type, options_for_select(["Blog Post", "Video Post"]), {:include_blank => 'Select One'}, required: true
+    .field
+      = f.label :title
+      = f.text_field :title, required: true
+    .field
+      = f.label :main_image
+      = f.file_field :main_image, required: true
+    .field
+      = f.label :video_upload
+      = f.text_field :video_upload, required: true
+    .field
+      = f.label :body
+      = f.text_area :body, id: :body, required: true
+      trix-editor input='body'
+    .field
+      = f.label :seo_title
+      = f.text_field :seo_title, required: true
+    .field
+      = f.label :seo_meta_description
+      = f.text_field :seo_meta_description, required: true
+    .actions = f.submit
 
 
-javascript:
-  var b = document.getElementById('blog_post_media_type')
-  b.addEventListener('change',changer)
-  function changer(){
-    if (this.value == 'Blog Post'){
-      document.getElementById('blog_post_video_upload').value = 'None'
-      document.getElementById('blog_post_video_upload').setAttribute('disabled',true)
+  javascript:
+    var b = document.getElementById('blog_post_media_type')
+    b.addEventListener('change',changer)
+    function changer(){
+      if (this.value == 'Blog Post'){
+        document.getElementById('blog_post_video_upload').value = 'None'
+        document.getElementById('blog_post_video_upload').setAttribute('disabled',true)
+      }
     }
-  }

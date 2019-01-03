@@ -1,27 +1,51 @@
-p#notice = notice
+body
+  #pre_blog_body
+    #bread_crumb
+      = render_breadcrumbs :separator => ' > '
+    #pre_blog_titles
+      #title
+        p
+          = @blog_post.title
+  #body-container
+    #body-left
+      - if @blog_post.media_type == 'Video Post'
+        .upload
+          iframe src= @blog_post.video_upload
+      - else
+        .upload
+          = image_tag(rails_blob_path(@blog_post.main_image))
+      #date
+        p
+          = @blog_post.dateConversion()
+      #author
+        p By Sports Field Solutions
+      #blog_body
+        p
+          = raw @blog_post.body
+    #body-right
+      #body-right-column
+        #text-box
+          p YOU MIGHT ALSO LIKE:
+        .entry_page
+          #side-bar
+            .entry_container
+              - @side_bar_posts.each_with_index do |blog_post, index|
+                - if blog_post.title == @blog_post.title
+                - else
+                  = link_to(blog_post_url(blog_post))
+                    .entry
+                      .entry_image style='background-image: url(#{rails_blob_path(blog_post.main_image)})'
+                      .entry_title
+                        p = blog_post.title
+          #questions-box
+            #questions-content
+              p HAVE QUESTIONS?
+              p WE HAVE ANSWERS.
+              = link_to "javascript:clicked('all')"
+                button id='questions-button' CONTACT US
 
-p
-  strong Media type:
-  = @blog_post.media_type
-p
-  strong Title:
-  = @blog_post.title
-p
-  strong Main image:
-  = @blog_post.main_image
-p
-  strong Video upload:
-  = @blog_post.video_upload
-p
-  strong Body:
-  = @blog_post.body
-p
-  strong Seo title:
-  = @blog_post.seo_title
-p
-  strong Seo meta description:
-  = @blog_post.seo_meta_description
 
-=> link_to 'Edit', edit_blog_post_path(@blog_post)
-'|
-=< link_to 'Back', blog_posts_path
+
+/ => link_to 'Edit', edit_blog_post_path(@blog_post)
+/ '|
+/ =< link_to 'Back', blog_posts_path

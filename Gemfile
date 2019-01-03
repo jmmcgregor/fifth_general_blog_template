@@ -65,3 +65,12 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'slim-rails'
 gem 'trix-rails', require: 'trix'
 gem 'aws-sdk-s3', require: false
+gem 'bcrypt'
+gem 'kaminari'
+gem 'friendly_id'
+gem 'breadcrumbs_on_rails'
+gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: '5.x'
+gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: '5.x'
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+gem 'searchkick'

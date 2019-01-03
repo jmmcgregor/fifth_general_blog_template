@@ -1,19 +1,45 @@
 class BlogPostsController < ApplicationController
   before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
-
+  add_breadcrumb "LEARNING CENTER", "/"
   # GET /blog_posts
   # GET /blog_posts.json
   def index
-    @blog_posts = BlogPost.all
+    @title = "Learning Center - Sports Field Solutions"
+    search = params[:title].present? ? params[:title] : nil
+    @video_posts = []
+    @article_posts = []
+    @showAll = true
+
+    @blog_posts = BlogPost.all.order(created_at: :desc)
+
+    @blog_posts = if search
+      BlogPost.search(search)
+    else
+      BlogPost.all.order(created_at: :desc)
+    end
+
+    @blog_posts.each do |blog|
+      if blog.media_type == 'Video Post'
+        @video_posts.push(blog)
+      elsif blog.media_type == 'Blog Post'
+        @article_posts.push(blog)
+      end
+
+    end
   end
 
   # GET /blog_posts/1
   # GET /blog_posts/1.json
   def show
+    @side_bar_posts = BlogPost.limit(3).order("RANDOM()").where.not(id: @blog_post.id)
+    @title = @blog_post.title
+    add_breadcrumb @blog_post.title.upcase, @blog_post.slug
+    @blog_post = BlogPost.friendly.find(params[:id])
   end
 
   # GET /blog_posts/new
   def new
+    @title = "New Blog Post"
     @blog_post = BlogPost.new
   end
 
@@ -26,15 +52,13 @@ class BlogPostsController < ApplicationController
   def create
     @blog_post = BlogPost.new(blog_post_params)
 
-    respond_to do |format|
-      if @blog_post.save
-        format.html { redirect_to @blog_post, notice: 'Blog post was successfully created.' }
-        format.json { render :show, status: :created, location: @blog_post }
-      else
-        format.html { render :new }
-        format.json { render json: @blog_post.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    @blog_post.save!
+    redirect_to @blog_post
+      # name: @blog_post.seo_title
+      # BlogPost.reindex
+      # format.html { redirect_to @blog_post, notice: 'Blog post was successfully created.' }
+      # format.json { render :show, status: :created, location: @blog_post }
   end
 
   # PATCH/PUT /blog_posts/1
@@ -61,10 +85,12 @@ class BlogPostsController < ApplicationController
     end
   end
 
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_blog_post
-      @blog_post = BlogPost.find(params[:id])
+      @blog_post = BlogPost.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
